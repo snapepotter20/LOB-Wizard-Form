@@ -1,0 +1,38 @@
+<div [formGroup]="formGroup" class="bg-white rounded-xl shadow-md p-8 space-y-6 border border-gray-200">
+  <!-- Title -->
+  <h2 class="text-2xl font-bold text-blue-800 border-b pb-4">Line of Business Details</h2>
+
+  <!-- LOB Name -->
+  <div class="space-y-1">
+    <label class="block text-sm font-medium text-gray-700">
+      LOB Name <span class="text-red-500">*</span>
+    </label>
+    <input
+      type="text"
+      formControlName="lobName"
+      placeholder="Enter Line of Business Name"
+      class="w-full border border-gray-300 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+    />
+    <small class="text-gray-500">Example: Banking, Telecom, Healthcare</small>
+    <small class="text-red-500 text-sm" *ngIf="lobName?.touched && lobName?.invalid">
+      LOB Name is required.
+    </small>
+  </div>
+
+  <!-- Email ID -->
+  <div class="space-y-1">
+    <label class="block text-sm font-medium text-gray-700">
+      Email ID <span class="text-red-500">*</span>
+    </label>
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Enter contact email"
+      class="w-full border border-gray-300 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+    />
+    <small class="text-gray-500">We'll use this email to contact you regarding LOB setup.</small>
+    <small class="text-red-500 text-sm" *ngIf="email?.touched && email?.invalid">
+      A valid email is required.
+    </small>
+  </div>
+</div>

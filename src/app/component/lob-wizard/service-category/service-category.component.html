@@ -1,0 +1,32 @@
+<div [formGroup]="formGroup" class="bg-white p-6 rounded-xl shadow-md border border-gray-200 space-y-4">
+  <!-- Section Title -->
+  <div>
+    <label class="block text-lg font-bold text-blue-800 mb-2">
+      Select Service Categories <span class="text-red-500">*</span>
+    </label>
+    <p class="text-sm text-gray-500 mb-4">
+      Choose the service categories applicable to this LOB. You can select multiple.
+    </p>
+  </div>
+
+  <!-- Checkbox Grid -->
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <label
+      *ngFor="let type of serviceTypes"
+      class="flex items-center space-x-3 p-4 border border-gray-300 rounded-lg hover:shadow-sm transition duration-150 cursor-pointer bg-gray-50 hover:bg-gray-100"
+    >
+      <input
+        type="checkbox"
+        class="form-checkbox h-5 w-5 text-blue-600 border-gray-300 focus:ring focus:ring-blue-200"
+        [checked]="isSelected(type)"
+        (change)="toggleSelection($event, type)"
+      />
+      <span class="text-sm font-medium text-gray-800">{{ type }}</span>
+    </label>
+  </div>
+
+  <!-- Validation Error -->
+  <div *ngIf="formGroup.get('services')?.invalid && formGroup.get('services')?.touched" class="text-red-500 text-sm mt-1">
+    Please select at least one service category.
+  </div>
+</div>
